@@ -16,10 +16,23 @@ class Board extends Component {
     };
   }
 
+  renderCards = () => {
+    const cardList = this.props.cards.map((card, index) => {
+      return (
+        <Card
+        key={index}
+        text={card.text}
+        emoji={card.emoji}
+        />
+      );
+    });
+    return cardList
+  }
+
   render() {
     return (
       <div>
-        Board
+        {this.renderCards()}
       </div>
     )
   }
@@ -27,7 +40,7 @@ class Board extends Component {
 }
 
 Board.propTypes = {
-
+  cards: PropTypes.array.isRequired,
 };
 
 export default Board;
