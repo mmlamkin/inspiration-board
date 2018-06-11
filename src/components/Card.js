@@ -5,6 +5,7 @@ import emoji from 'emoji-dictionary';
 import './Card.css';
 
 class Card extends Component {
+
   render() {
 
     const ifEmoji = () => {
@@ -12,6 +13,7 @@ class Card extends Component {
         return <p>{emoji.getUnicode(this.props.emoji)}</p>
       }
     }
+
     return (
       <div className="card">
         <p>{this.props.text}</p>
