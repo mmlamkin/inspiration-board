@@ -10,13 +10,13 @@ class Card extends Component {
 
     const ifEmoji = () => {
       if (this.props.emoji) {
-        return <p>{emoji.getUnicode(this.props.emoji)}</p>
+        return <span className='card__content-emoji'>{emoji.getUnicode(this.props.emoji)}</span>
       }
     }
 
     return (
-      <div className="card">
-        <p>{this.props.text}</p>
+      <div className="card card__content">
+        <span className='card__content-text'>{this.props.text}</span>
         {ifEmoji()}
       </div>
     )
