@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
 import './App.css';
 import Board from './components/Board';
+import Card from './components/Card'
 
+const CARDS = [{
+          "id": 345,
+          "text": "you are enough",
+          "emoji": null
+      },
+      {
+          "id": 344,
+          "text": "wow!",
+          "emoji": "heart_eyes_cat"
+      }]
+      
 class App extends Component {
+
+
+
   render() {
     return (
       <section>
@@ -13,6 +28,7 @@ class App extends Component {
           url="https://inspiration-board.herokuapp.com/boards/"
           boardName={`Ada-Lovelace`}
           />
+        <Card text={CARDS[1].text} emoji={CARDS[1].emoji} />
       </section>
     );
   }
