@@ -34,7 +34,7 @@ class Board extends Component {
     axios.post(`${this.props.url}/${this.props.boardName}/cards`)
       .then( (response) => {
         this.setState({
-          cards: componentDidMount()
+          cards: this.state.cards.push(response)
         })
       })
       .catch( (error) => {
