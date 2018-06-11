@@ -18,31 +18,45 @@ class Board extends Component {
 
   componentDidMount = () => {
     axios.get(`${this.props.url}/${this.props.boardName}/cards`)
-      .then( (response) => {
-        this.setState({
-          cards: response.data
-        });
-      })
-      .catch( (error) => {
-        this.setState({
-          error: error.message
-        });
+    .then( (response) => {
+      this.setState({
+        cards: response.data
       });
+    })
+    .catch( (error) => {
+      this.setState({
+        error: error.message
+      });
+    });
   }
 
   addCard = (card) => {
     axios.post(`${this.props.url}/${this.props.boardName}/cards`)
-      .then( (response) => {
-        this.setState({
-          cards: this.state.cards.push(response)
-        })
+    .then( (response) => {
+      this.setState({
+        cards: this.state.cards
       })
-      .catch( (error) => {
-        this.setState({
-          error: error.message
-        });
+    })
+    .catch( (error) => {
+      this.setState({
+        error: error.message
       });
-}
+    });
+  }
+
+  deleteCard = (id) => {
+    axios.delete(`${this.props.url}/${this.props.boardName}/cards/${id}`)
+    .then( (response) => {
+      this.setState({
+        cards: this.state.cards
+      })
+    })
+    .catch( (error) => {
+      this.setState({
+        error: error.message
+      });
+    });
+  }
 
   renderCards = () => {
     const cardList = this.state.cards.map((card, index) => {
@@ -52,6 +66,7 @@ class Board extends Component {
         id={card.card.id}
         text={card.card.text}
         emoji={card.card.emoji}
+        deleteCardCallback={this.deleteCard}
         />
       );
     });
@@ -63,7 +78,7 @@ class Board extends Component {
       <section>
       <NewCardForm addCardCallback={this.addCard} />
       <div className='board'>
-        {this.renderCards()}
+      {this.renderCards()}
       </div>
       </section>
     )
