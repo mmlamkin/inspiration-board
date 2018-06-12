@@ -6,6 +6,7 @@ import './Board.css';
 import Card from './Card';
 import NewCardForm from './NewCardForm';
 import CARD_DATA from '../data/card-data.json';
+import emoji from 'emoji-dictionary';
 
 class Board extends Component {
   constructor(props) {
@@ -31,9 +32,15 @@ class Board extends Component {
   }
 
   addCard = (card) => {
+
     axios.post(`${this.props.url}/${this.props.boardName}/cards?text=${card.text}&emoji=${card.emoji}`)
     .then( (response) => {
-      this.componentDidMount()
+      card.id = response.data.card.id
+      this.state.cards.push(card)
+      this.setState({
+        cards: this.state.cards,
+        message: `New Card Added!`
+      })
     })
     .catch( (error) => {
       this.setState({
@@ -56,26 +63,38 @@ class Board extends Component {
 
   renderCards = () => {
     const cardList = this.state.cards.map((card, index) => {
+      let someCard = card.card ? card.card : card
       return (
+
         <Card
         key={index}
-        id={card.card.id}
-        text={card.card.text}
-        emoji={card.card.emoji}
+        id={someCard.id}
+        text={someCard.text}
+        emoji={someCard.emoji}
         deleteCardCallback={this.deleteCard}
         />
       );
     });
+    console.log(this.state.cards);
     return cardList
   }
 
   render() {
+
+    const anyErrors = () => {
+    if (this.state.error) {
+      return <p>{this.state.error}</p>
+    }
+  }
+
     return (
       <section>
-      <NewCardForm addCardCallback={this.addCard} />
-      <div className='board'>
-      {this.renderCards()}
-      </div>
+        <header>{this.state.message ? this.state.message: ""}</header>
+        {anyErrors()}
+        <NewCardForm addCardCallback={this.addCard} />
+        <div className='board'>
+          {this.renderCards()}
+        </div>
       </section>
     )
   }
