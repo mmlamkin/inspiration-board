@@ -6,7 +6,7 @@ import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
 
 const EMOJI_LIST = ["", "heart_eyes", "beer", "clap", "sparkling_heart", "heart_eyes_cat", "dog"]
-const defaultOption = EMOJI_LIST[0]
+
 
 class NewCardForm extends Component {
 
@@ -14,7 +14,8 @@ class NewCardForm extends Component {
     super();
 
     this.state = {
-      text: ''
+      text: '',
+      emoji: ''
     };
   }
 
@@ -27,7 +28,16 @@ class NewCardForm extends Component {
     const fieldValue = event.target.value;
     const updateState = {};
     updateState[fieldName] = fieldValue
+
     this.setState(updateState);
+  }
+
+  onDropDownChange = (option) => {
+    const emojiValue = option.value
+    this.setState({
+      emoji: emojiValue
+    })
+
   }
 
   valid = () => {
@@ -48,17 +58,19 @@ class NewCardForm extends Component {
     }
   }
 
+  emojiList() {
+    return EMOJI_LIST.map((name) => {
+      return (
+        {
+          value: name,
+          label: name ? emoji.getUnicode(name) : "Select an option"
+
+        }
+      );
+    });
+  }
+
   render () {
-
-    const emojiList = () => {
-      const emojis = EMOJI_LIST.map((emoji) => {
-        return (
-          emoji.getUnicode(emoji)
-        );
-      });
-        return emojis
-    }
-
     return (
       <form onSubmit={this.onFormSubmit}>
         <div>
@@ -66,7 +78,7 @@ class NewCardForm extends Component {
           <textarea name="text" value={this.state.text} onChange={this.onFieldChange} />
         </div>
 
-        <Dropdown options={EMOJI_LIST} onChange={this._onSelect} value={defaultOption} placeholder="Select an Emoji" />
+        <Dropdown options={this.emojiList()} onChange={this.onDropDownChange} name="emoji" value={emoji.getUnicode(this.state.emoji)} placeholder="Select an Emoji" />
 
         <input type="submit" value="Add Card" />
 

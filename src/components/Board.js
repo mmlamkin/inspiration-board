@@ -75,7 +75,7 @@ class Board extends Component {
         />
       );
     });
-    console.log(this.state.cards);
+
     return cardList
   }
 
@@ -101,8 +101,5 @@ class Board extends Component {
 
 }
 
-Board.propTypes = {
-  cards: PropTypes.array.isRequired,
-};
 
 export default Board;
