@@ -34,7 +34,7 @@ class Board extends Component {
     axios.post(`${this.props.url}/${this.props.boardName}/cards`)
     .then( (response) => {
       this.setState({
-        cards: this.state.cards
+        cards: this.componentDidMount()
       })
     })
     .catch( (error) => {
@@ -47,9 +47,7 @@ class Board extends Component {
   deleteCard = (id) => {
     axios.delete(`${this.props.url}/${this.props.boardName}/cards/${id}`)
     .then( (response) => {
-      this.setState({
-        cards: this.componentDidMount()
-      })
+      this.componentDidMount()
     })
     .catch( (error) => {
       this.setState({

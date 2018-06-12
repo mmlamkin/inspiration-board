@@ -22,7 +22,7 @@ class Card extends Component {
 
     return (
       <div className="card card__content">
-        <button onClick={this.deleteCard}>
+        <button className="card__delete" onClick={this.deleteCard}>
           x
         </button>
         <span className='card__content-text'>{this.props.text}</span>
