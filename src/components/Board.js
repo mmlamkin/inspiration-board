@@ -48,7 +48,7 @@ class Board extends Component {
     axios.delete(`${this.props.url}/${this.props.boardName}/cards/${id}`)
     .then( (response) => {
       this.setState({
-        cards: this.state.cards
+        cards: this.componentDidMount()
       })
     })
     .catch( (error) => {
