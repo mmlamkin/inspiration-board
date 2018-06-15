@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import Card from './Card';
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 
 describe('Card', () => {
   test('that it matches an existing snapshot', () => {

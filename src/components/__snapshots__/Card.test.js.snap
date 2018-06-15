@@ -1,13 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Board that it matches an existing snapshot 1`] = `
+exports[`Card that it matches an existing snapshot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Board
-    boardName="mary"
-    url="https://inspiration-board.herokuapp.com/boards/"
-/>,
+  Symbol(enzyme.__unrendered__): <Card />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -21,17 +18,18 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <header />,
-        undefined,
-        <NewCardForm
-          addCardCallback={[Function]}
-/>,
-        <div
-          className="board"
+        <button
+          className="card__delete"
+          onClick={[Function]}
 >
-          
-</div>,
+          x
+</button>,
+        <span
+          className="card__content-text"
+/>,
+        undefined,
       ],
+      "className": "card card__content",
     },
     "ref": null,
     "rendered": Array [
@@ -40,38 +38,29 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "",
+          "children": "x",
+          "className": "card__delete",
+          "onClick": [Function],
         },
         "ref": null,
-        "rendered": "",
-        "type": "header",
-      },
-      undefined,
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "addCardCallback": [Function],
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
+        "rendered": "x",
+        "type": "button",
       },
       Object {
         "instance": null,
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": Array [],
-          "className": "board",
+          "children": undefined,
+          "className": "card__content-text",
         },
         "ref": null,
-        "rendered": Array [],
-        "type": "div",
+        "rendered": null,
+        "type": "span",
       },
+      undefined,
     ],
-    "type": "section",
+    "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
@@ -80,17 +69,18 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <header />,
-          undefined,
-          <NewCardForm
-            addCardCallback={[Function]}
-/>,
-          <div
-            className="board"
+          <button
+            className="card__delete"
+            onClick={[Function]}
 >
-            
-</div>,
+            x
+</button>,
+          <span
+            className="card__content-text"
+/>,
+          undefined,
         ],
+        "className": "card card__content",
       },
       "ref": null,
       "rendered": Array [
@@ -99,38 +89,29 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "",
+            "children": "x",
+            "className": "card__delete",
+            "onClick": [Function],
           },
           "ref": null,
-          "rendered": "",
-          "type": "header",
-        },
-        undefined,
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "addCardCallback": [Function],
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
+          "rendered": "x",
+          "type": "button",
         },
         Object {
           "instance": null,
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": Array [],
-            "className": "board",
+            "children": undefined,
+            "className": "card__content-text",
           },
           "ref": null,
-          "rendered": Array [],
-          "type": "div",
+          "rendered": null,
+          "type": "span",
         },
+        undefined,
       ],
-      "type": "section",
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {

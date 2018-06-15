@@ -25,8 +25,10 @@ class Card extends Component {
         <button className="card__delete" onClick={this.deleteCard}>
           x
         </button>
+
         <span className='card__content-text'>{this.props.text}</span>
         {ifEmoji()}
+      
       </div>
     )
   }
